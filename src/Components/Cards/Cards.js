@@ -2,9 +2,11 @@ import React from "react";
 import {
   Card,
   CardBody,
+  CardImg,
   CardTitle,
   CardSubtitle,
   Container,
+  CardText,
   Row,
   Col,
 } from "reactstrap";
@@ -16,59 +18,39 @@ function Cards(props) {
       <Row lg="4" md="2" sm="1">
         {listTour.map((tour, index) => (
           <Col key={index}>
-            <Card
-              style={{
-                borderRadius: "15px",
-                boxShadow: "rgba(0, 0, 0, 0.5) 0px 3px 8px",
-              }}
-            >
-              <div>
-                <img
-                  alt="Sample"
-                  src={tour.img}
-                  style={{
-                    borderTopLeftRadius: "15px",
-                    borderTopRightRadius: "15px",
-                    width: "100%",
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "10px",
-                    left: "10px",
-                    backgroundColor: "red",
-                    color: "#fff",
-                    fontSize: "12px",
-                    fontWeight: "500",
-                    padding: "5px",
-                  }}
-                >
-                  12% off
-                </div>
+            <Card className="h-100 box-shadow">
+              <div className="position-relative">
+                <CardImg alt="Card image cap" src={tour.img} top width="100%" />
+                <span className="position-absolute top-0 start-0 bg-danger text-white mt-2 ms-2 py-1 px-2 h6 rounded">
+                  12 off
+                </span>
               </div>
               <CardBody>
-                <CardSubtitle className="mb-3 mt-2 text-muted" tag="h6">
-                  <i className="fa-solid fa-magnifying-glass-location"></i>
-                  {tour.category}
+                <CardSubtitle className="mb-2 text-muted" tag="h6">
+                  <p className="text-gray font-light">
+                    <i className="fa-solid fa-map-pin"></i> {tour.category}
+                  </p>
                 </CardSubtitle>
-                <CardTitle tag="h5" className="mt-2 mb-4">
-                  {tour.title}
-                </CardTitle>
-                <CardSubtitle className="mb-2 mt-2 mb-3 text-muted" tag="h6">
-                  From{" "}
-                  <span style={{ color: "var(--primary-color)" }}>
-                    {tour.price}{" "}
+                <CardTitle tag="h5">{tour.title}</CardTitle>
+
+                <CardText>
+                  From
+                  <span className="font-bold text-primary mx-2">
+                    ${tour.price}
                   </span>
-                  <span style={{ textDecorationLine: "line-through" }}>
-                    250.00
+                  <span className="text-decoration-line-through text-gray fs-08">
+                    $250.00
                   </span>
-                </CardSubtitle>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-regular fa-star-half-stroke"></i>
+                </CardText>
+                <div>
+                  <div className="fs-08 text-yellow">
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-regular fa-star-half-stroke"></i>
+                  </div>
+                </div>
               </CardBody>
             </Card>
           </Col>
